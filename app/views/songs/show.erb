@@ -1,16 +1,16 @@
 <h1>Song Name: <%=@song.name%></h1>
-<h2>Artist Name: <a href="/artists/<%= @song.artist.id %>"><%= @song.artist.name %></a></h2>
+<h2>Artist Name: <a href="/artists/<%= @song.artist.slug %>"><%= @song.artist.name %></a></h2>
 
 <h2>Genre Name:</h2>
 <ul>
 <% @song.genres.each do |genre| %>
-    <li><a href="/genres/<%= genre.id %>"><%= genre.name %></a></li>
+    <li><a href="/genres/<%= genre.slug %>"><%= genre.name %></a></li>
 <% end %></ul>
 
 <form>
-    <input type="button" value="Edit" onclick='window.location.href="/songs/<%=@song.id%>/edit"'/>
+    <input type="button" value="Edit" onclick='window.location.href="/songs/<%=@song.slug%>/edit"'/>
 </form>
-<form action="/songs/<%=@song.id%>" method="POST">
+<form action="/songs/<%=@song.slug%>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="DELET THIS >:[">
 </form>

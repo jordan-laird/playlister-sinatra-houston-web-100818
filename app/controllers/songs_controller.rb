@@ -8,8 +8,8 @@ class SongsController < ApplicationController
         erb :"songs/new"
     end
 
-    get '/songs/:id' do
-        @song = Song.find(params[:id])
+    get '/songs/:name' do
+        @song = Song.find_by_slug(params[:name])
         erb :"songs/show"
     end
 
@@ -18,19 +18,19 @@ class SongsController < ApplicationController
         redirect '/songs'
     end
 
-    get '/songs/:id/edit' do
-        @song = Song.find(params[:id])
+    get '/songs/:name/edit' do
+        @song = Song.find_by_slug(params[:name])
         erb :"songs/edit"
     end
 
-    patch '/songs/:id' do
-        @song = Song.find(params[:id])
+    patch '/songs/:name' do
+        @song = Song.find_by_slug(params[:name])
         @song.update(params[:song])
-        redirect "/songs/#{@song.id}"
+        redirect "/songs/#{@song.slug}"
     end
 
-    delete '/songs/:id' do 
-        @song = Song.find(params[:id])
+    delete '/songs/:name' do 
+        @song = Song.find_by_slug(params[:name])
         @song.destroy
         
         redirect "/songs"

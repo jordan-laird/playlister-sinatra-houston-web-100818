@@ -1,11 +1,12 @@
 class ArtistsController < ApplicationController
     get '/artists' do
         @artists = Artist.all 
+        
         erb :"artists/index"
     end
 
-    get '/artists/:id' do
-        @artist = Artist.find(params[:id])
+    get '/artists/:name' do
+        @artist = Artist.find_by_slug(params[:name])
 
         genre_array = []
         @artist.songs.each do |song|
