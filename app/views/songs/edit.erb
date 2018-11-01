@@ -1,0 +1,9 @@
+<h1>Edit this Song</h1>
+<form action="/songs/<%=@song.id%>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+<input value="<%=@song.name%>" placeholder="Song Name" name="song[name]">
+
+<%# do we want to edit artist and genre here?? %>
+
+<input type="submit">
+</form>

@@ -1,0 +1,13 @@
+<h1>Song Name: <%=@song.name%></h1>
+<h2>Artist Name: <a href="/artists/<%= @song.artist.id %>"><%= @song.artist.name %></a></h2>
+<h2>Genre Name: <% @song.genres do |genre| %>
+    <a href="/genres/<%= genre.id %>"><%= genre.name%></a>
+<%end%></h2>
+
+<form>
+    <input type="button" value="Edit" onclick='window.location.href="/songs/<%=@song.id%>/edit"'/>
+</form>
+<form action="/songs/<%=@song.id%>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="DELET THIS >:[">
+</form>
