@@ -1,8 +1,7 @@
 <h1><%=@genre.name%></h1>
 
 <h2> lists all of this genre's songs: </h2>
-<ul>
+
 <% @genre.songs.each do |song| %>
-    <li><a href="/songs/<%=song.slug%>"><%= song.name %></a> - <a href="/artists/<%=song.artist.slug%>"><%= song.artist.name %></a></li>
+    <p><a href="/songs/<%=song.slug%>"><%= song.name %></a> - <a href="/artists/<%=song.artist.slug%>"><%= song.artist.name %></a></p>
 <% end %>
-</ul>
